@@ -560,6 +560,12 @@ resource "aws_lb_target_group" "this" {
 ################################################################################
 # Target Group Attachment
 ################################################################################
+resource "aws_autoscaling_attachment" "target" {
+  for_each = { for k, v in var.target_groups : k => v if var.attach_asg }
+
+  autoscaling_group_name = var.autoscaling_group_name
+  lb_target_group_arn   = aws_lb_target_group.this[each.key].arn
+}
 
 resource "aws_lb_target_group_attachment" "this" {
   for_each = { for k, v in var.target_groups : k => v if local.create && lookup(v, "create_attachment", true) }

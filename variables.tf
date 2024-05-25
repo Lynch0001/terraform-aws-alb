@@ -291,3 +291,16 @@ variable "putin_khuylo" {
   type        = bool
   default     = true
 }
+
+variable "attach_asg" {
+  description = "Whether to attach ASG"
+  type        = bool
+  default     = true
+}
+
+variable "autoscaling_group_name" {
+  description = "ASG name"
+  type        = string
+  default     = null
+}
+

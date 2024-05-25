@@ -36,3 +36,7 @@ terraform.rc
 *.key
 *.csr
 **/cert_files/*
+
+/.idea
+
+/.idea/sonarlint
